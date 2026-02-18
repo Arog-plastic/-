@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0a0f1a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="আরজ হিসাব">
+<title>আরজ প্লাস্টিক — দৈনিক হিসাব</title>
+<script>
+(function(){
+  var mj = '{\n  "name": "আরজ প্লাস্টিক হিসাব",\n  "short_name": "আরজ হিসাব",\n  "description": "দৈনিক কালেকশন ও খরচ হিসাব",\n  "start_url": "./",\n  "scope": "./",\n  "display": "standalone",\n  "background_color": "#0a0f1a",\n  "theme_color": "#00d4aa",\n  "orientation": "portrait-primary",\n  "lang": "bn",\n  "icons": [\n    { "src": "data:image/png;base64,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", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },\n    { "src": "data:image/png;base64,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", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }\n  ]\n}';
+  var blob = new Blob([mj], {type:'application/manifest+json'});
+  var url = URL.createObjectURL(blob);
+  var link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = url;
+  document.head.appendChild(link);
+})();
+</script>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0f1a;--sur:#111827;--card:#1a2332;--bdr:#1e2d3d;--acc:#00d4aa;--red:#ff6b6b;--gold:#ffd166;--txt:#e8f4f8;--mut:#7a9bb5}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:'Hind Siliguri',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;padding-bottom:72px}
+
+/* ── INSTALL GUIDE MODAL ── */
+#installScreen{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px 20px 30px;overflow-y:auto}
+.inst-logo{font-size:56px;margin:16px 0 8px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.inst-title{font-size:24px;font-weight:700;color:var(--acc);margin-bottom:4px;text-align:center}
+.inst-addr{font-size:11px;color:var(--mut);text-align:center;margin-bottom:20px}
+
+.method-tabs{display:flex;background:var(--sur);border-radius:12px;padding:3px;width:100%;max-width:360px;margin-bottom:16px;border:1px solid var(--bdr)}
+.mtab{flex:1;padding:9px 4px;text-align:center;font-size:12px;font-weight:600;border-radius:9px;cursor:pointer;color:var(--mut);font-family:'Hind Siliguri',sans-serif;border:none;background:none;transition:all .2s}
+.mtab.active{background:var(--acc);color:#000}
+
+.method-panel{display:none;width:100%;max-width:360px}
+.method-panel.active{display:block}
+
+.inst-box{background:var(--card);border-radius:16px;padding:16px;border:1px solid var(--bdr);margin-bottom:14px}
+.inst-box-title{font-size:13px;font-weight:700;color:var(--acc);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.step{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px}
+.step:last-child{margin-bottom:0}
+.snum{background:var(--acc);color:#000;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;margin-top:1px}
+.stxt{font-size:13px;line-height:1.5;color:var(--txt)}
+.stxt strong{color:var(--acc)}
+.stxt code{background:rgba(0,212,170,.12);color:var(--acc);padding:1px 6px;border-radius:4px;font-size:12px}
+
+.warn-box{background:rgba(255,209,102,.08);border:1px solid rgba(255,209,102,.25);border-radius:12px;padding:12px;margin-bottom:14px;font-size:12px;color:var(--gold);line-height:1.6}
+
+.inst-enter{width:100%;max-width:360px;padding:14px;background:linear-gradient(135deg,#00d4aa,#00a87f);color:#000;border:none;border-radius:13px;font-size:16px;font-weight:700;font-family:'Hind Siliguri',sans-serif;cursor:pointer;box-shadow:0 6px 20px rgba(0,212,170,.3);margin-bottom:10px}
+.inst-enter:active{transform:scale(.97)}
+.inst-skip{font-size:13px;color:var(--mut);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'Hind Siliguri',sans-serif;margin-bottom:6px}
+
+/* ── HEADER ── */
+.hdr{background:linear-gradient(135deg,#0d1b12,#0a1520);padding:12px 14px 10px;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--bdr);box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.hdr-row{display:flex;justify-content:space-between;align-items:flex-start}
+.hdr-left{display:flex;flex-direction:column;gap:1px}
+.app-nm{font-size:17px;font-weight:700;color:var(--acc);letter-spacing:.4px;line-height:1.2}
+.app-addr{font-size:10px;color:var(--mut);line-height:1.4;margin-top:1px}
+.dt-pill{background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.2);color:var(--acc);padding:3px 10px;border-radius:20px;font-size:11px;white-space:nowrap;margin-top:2px}
+
+/* ── SUMMARY ── */
+.sum{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:10px 10px 0}
+.sc{background:var(--card);border-radius:13px;padding:11px;border:1px solid var(--bdr);position:relative;overflow:hidden}
+.sc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.sc.c::after{background:#00d4aa}.sc.e::after{background:#ff6b6b}
+.sc.b{grid-column:1/-1}.sc.b::after{background:linear-gradient(90deg,#ffd166,#00d4aa)}
+.sl{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
+.sv{font-size:19px;font-weight:700}
+.sv.g{color:#00d4aa}.sv.r{color:#ff6b6b}.sv.gold{color:#ffd166}
+.si{position:absolute;right:8px;top:8px;font-size:18px;opacity:.12}
+
+/* ── SECTIONS ── */
+.sec{display:none;padding:10px}
+.sec.active{display:block;animation:fadeUp .25s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── FORM ── */
+.fc{background:var(--card);border-radius:14px;padding:14px;border:1px solid var(--bdr);margin-bottom:10px}
+.fc-ttl{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.fg{display:grid;gap:9px}
+.fgrp{display:flex;flex-direction:column;gap:4px}
+label{font-size:11px;color:var(--mut);font-weight:500}
+input,select,textarea{background:var(--sur);border:1.5px solid var(--bdr);border-radius:9px;padding:10px 12px;color:var(--txt);font-size:15px;font-family:'Hind Siliguri',sans-serif;width:100%;outline:none;transition:border-color .2s}
+input:focus,select:focus{border-color:var(--acc)}
+select option{background:#111827}
+textarea{resize:none;height:80px;font-size:13px}
+
+/* ── BUTTONS ── */
+.btn{width:100%;padding:12px;border-radius:11px;font-size:15px;font-weight:700;font-family:'Hind Siliguri',sans-serif;cursor:pointer;border:none;transition:all .18s;margin-top:2px}
+.bg{background:linear-gradient(135deg,#00d4aa,#00a87f);color:#000;box-shadow:0 4px 14px rgba(0,212,170,.25)}
+.br{background:linear-gradient(135deg,#ff6b6b,#cc4444);color:#fff;box-shadow:0 4px 14px rgba(255,107,107,.25)}
+.bb{background:linear-gradient(135deg,#5b8dee,#3a68cc);color:#fff;box-shadow:0 4px 14px rgba(91,141,238,.25)}
+.bgold{background:linear-gradient(135deg,#ffd166,#f0a500);color:#000;box-shadow:0 4px 14px rgba(255,209,102,.25)}
+.bdr-btn{background:var(--bdr);color:var(--txt)}
+.btn:active{transform:scale(.97)}
+.btn-row{display:flex;gap:8px;margin-bottom:10px}
+.btn-row .btn{flex:1;font-size:13px;padding:10px 6px}
+
+/* ── TX LIST ── */
+.stl{font-size:11px;color:var(--mut);margin-bottom:7px;font-weight:500;text-transform:uppercase;letter-spacing:.3px}
+.txl{display:flex;flex-direction:column;gap:7px}
+.txi{background:var(--card);border-radius:11px;padding:11px 11px 11px 14px;border:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;position:relative;animation:fadeUp .25s ease}
+.txi::before{content:'';position:absolute;left:0;top:7px;bottom:7px;width:3px;border-radius:2px}
+.txi.income::before{background:#00d4aa}.txi.expense::before{background:#ff6b6b}
+.txl-l{flex:1;min-width:0}
+.txn{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.txm{font-size:11px;color:var(--mut);margin-top:2px}
+.txa{font-size:16px;font-weight:700;white-space:nowrap;margin-left:7px}
+.txa.income{color:#00d4aa}.txa.expense{color:#ff6b6b}
+.txd{background:none;border:none;color:var(--mut);font-size:16px;cursor:pointer;padding:4px 7px;border-radius:6px;margin-left:3px;font-family:'Hind Siliguri',sans-serif}
+.txd:active{background:rgba(255,107,107,.15);color:#ff6b6b}
+.empty{text-align:center;padding:32px 20px;color:var(--mut)}
+.empty .ei{font-size:40px;margin-bottom:8px}
+.empty p{font-size:13px}
+
+/* ── REPORT ── */
+.rf{display:flex;gap:8px;margin-bottom:10px}
+.rf select,.rf input{flex:1;padding:9px 10px;font-size:13px}
+.rs{background:var(--card);border-radius:14px;padding:13px 14px;border:1px solid var(--bdr);margin-bottom:10px}
+.rr{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--bdr);font-size:13px}
+.rr:last-child{border:none}
+.rr .rl{color:var(--mut)}.rr .rv{font-weight:700}
+
+/* ── MONTH CHIPS ── */
+.mch{display:flex;gap:6px;overflow-x:auto;padding-bottom:5px;margin-bottom:10px;scrollbar-width:none}
+.mch::-webkit-scrollbar{display:none}
+.chip{padding:6px 13px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;border:1px solid var(--bdr);background:var(--card);color:var(--mut);font-family:'Hind Siliguri',sans-serif;transition:all .2s}
+.chip.active{background:var(--acc);color:#000;border-color:var(--acc);font-weight:700}
+
+/* ── GOOGLE DRIVE SECTION ── */
+.drive-status{display:flex;align-items:center;gap:10px;background:var(--sur);border-radius:10px;padding:10px 12px;margin-bottom:10px;border:1px solid var(--bdr);font-size:13px}
+.drive-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.drive-dot.ok{background:#00d4aa;box-shadow:0 0 6px rgba(0,212,170,.5)}
+.drive-dot.off{background:#ff6b6b}
+.drive-dot.wait{background:#ffd166;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.drive-info{flex:1}
+.drive-info .di-title{font-weight:600;font-size:13px}
+.drive-info .di-sub{font-size:11px;color:var(--mut);margin-top:1px}
+.last-sync{font-size:10px;color:var(--mut);margin-bottom:10px;text-align:center}
+
+/* ── BOTTOM NAV ── */
+.bnv{position:fixed;bottom:0;left:0;right:0;background:var(--sur);border-top:1px solid var(--bdr);display:flex;z-index:200;padding-bottom:env(safe-area-inset-bottom)}
+.nb{flex:1;padding:10px 4px;text-align:center;cursor:pointer;border:none;background:none;color:var(--mut);font-family:'Hind Siliguri',sans-serif;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:2px;transition:all .2s}
+.nb .ni{font-size:20px;line-height:1;transition:transform .2s}
+.nb.active{color:var(--acc)}
+.nb.active .ni{transform:scale(1.1)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:82px;left:50%;transform:translateX(-50%);background:var(--acc);color:#000;padding:9px 18px;border-radius:28px;font-size:13px;font-weight:600;z-index:9999;white-space:nowrap;animation:tin .28s ease,tout .28s 2s ease forwards;pointer-events:none}
+@keyframes tin{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes tout{to{opacity:0;transform:translateX(-50%) translateY(10px)}}
+
+/* ── MODAL OVERLAY ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;display:flex;align-items:flex-end}
+.sheet{background:var(--sur);border-radius:22px 22px 0 0;padding:20px 16px 32px;width:100%;border-top:1px solid var(--bdr);animation:slideUp .28s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.sheet-title{font-size:16px;font-weight:700;margin-bottom:16px;text-align:center;position:relative}
+.sheet-close{position:absolute;right:0;top:-4px;background:none;border:none;color:var(--mut);font-size:22px;cursor:pointer;line-height:1}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     INSTALL GUIDE SCREEN
+════════════════════════════════════════ -->
+<div id="installScreen">
+  <div class="inst-logo">💰</div>
+  <div class="inst-title">আরজ প্লাস্টিক</div>
+  <div class="inst-addr">৫৩, তারা মসজিদ রোড, কামরাঙ্গীরচর, ঢাকা</div>
+
+  <!-- Method Tabs -->
+  <div class="method-tabs" style="max-width:360px;width:100%">
+    <button class="mtab active" onclick="switchTab('android')">📱 Android</button>
+    <button class="mtab" onclick="switchTab('iphone')">🍎 iPhone</button>
+    <button class="mtab" onclick="switchTab('pc')">💻 PC/Desktop</button>
+  </div>
+
+  <!-- Android -->
+  <div class="method-panel active" id="tab-android">
+
+    <!-- PWA Direct Install Button — shows when browser supports it -->
+    <div id="pwaInstallBtn" style="display:none;width:100%;max-width:360px;margin-bottom:14px">
+      <button onclick="triggerInstall()" style="width:100%;padding:16px;background:linear-gradient(135deg,#00d4aa,#00a87f);color:#000;border:none;border-radius:14px;font-size:17px;font-weight:700;font-family:'Hind Siliguri',sans-serif;cursor:pointer;box-shadow:0 6px 20px rgba(0,212,170,.4);animation:pulse 2s infinite">
+        📲 এখনই Install করুন!
+      </button>
+      <p style="text-align:center;font-size:12px;color:var(--acc);margin-top:8px">✅ সরাসরি Install বাটন পাওয়া গেছে!</p>
+    </div>
+
+    <div class="warn-box">
+      ⚠️ এই App-টি <strong>Netlify</strong> থেকে খুলতে হবে। নিচের ধাপ অনুসরণ করুন।
+    </div>
+    <div class="inst-box">
+      <div class="inst-box-title">🚀 এক বারের কাজ — Netlify-তে Upload</div>
+      <div class="step"><div class="snum">১</div><div class="stxt">নিচের <strong style="color:var(--acc)">ZIP Download</strong> করুন এবং ফোনে রাখুন</div></div>
+      <div class="step"><div class="snum">২</div><div class="stxt">PC বা ফোনে <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--acc);font-weight:700">app.netlify.com/drop</a> খুলুন</div></div>
+      <div class="step"><div class="snum">৩</div><div class="stxt">ZIP ফাইলটি সেখানে <strong>Drag & Drop</strong> করুন বা Upload করুন</div></div>
+      <div class="step"><div class="snum">৪</div><div class="stxt">একটি <strong style="color:var(--acc)">https://xxx.netlify.app</strong> লিঙ্ক পাবেন</div></div>
+      <div class="step"><div class="snum">৫</div><div class="stxt">ফোনে Chrome-এ সেই লিঙ্কটি খুলুন</div></div>
+      <div class="step"><div class="snum">৬</div><div class="stxt">Chrome-এ <strong>"Install করুন"</strong> বাটন অটো আসবে — চাপুন ✅</div></div>
+    </div>
+    <div class="inst-box" style="background:rgba(0,212,170,.05);border-color:rgba(0,212,170,.2)">
+      <div class="inst-box-title">📱 Manual পদ্ধতি (বিকল্প)</div>
+      <div class="step"><div class="snum">১</div><div class="stxt">Netlify লিঙ্কটি Chrome-এ খুলুন</div></div>
+      <div class="step"><div class="snum">২</div><div class="stxt">Chrome-এ <strong>⋮ মেনু → "Add to Home Screen"</strong> চাপুন</div></div>
+    </div>
+  </div>
+
+  <!-- iPhone -->
+  <div class="method-panel" id="tab-iphone">
+    <div class="inst-box">
+      <div class="inst-box-title">🍎 iPhone/iPad-এ Install করুন</div>
+      <div class="step"><div class="snum">১</div><div class="stxt">ফাইলটি <strong>Safari</strong> browser-এ খুলুন (Chrome-এ হবে না)</div></div>
+      <div class="step"><div class="snum">২</div><div class="stxt">নিচে মাঝখানে <strong>Share বাটন</strong> (⬆️) চাপুন</div></div>
+      <div class="step"><div class="snum">৩</div><div class="stxt"><strong>"Add to Home Screen"</strong> খুঁজে চাপুন</div></div>
+      <div class="step"><div class="snum">৪</div><div class="stxt">উপরে ডানে <strong>"Add"</strong> চাপুন ✅</div></div>
+    </div>
+  </div>
+
+  <!-- PC -->
+  <div class="method-panel" id="tab-pc">
+    <div class="inst-box">
+      <div class="inst-box-title">💻 PC-তে Chrome-এ Install করুন</div>
+      <div class="step"><div class="snum">১</div><div class="stxt">ফাইলটি Chrome-এ খুলুন</div></div>
+      <div class="step"><div class="snum">২</div><div class="stxt">Address bar-এর ডানে <strong>Install আইকন</strong> (⊕) দেখাবে — চাপুন</div></div>
+      <div class="step"><div class="snum">৩</div><div class="stxt">অথবা: <strong>⋮ মেনু → "Install আরজ হিসাব"</strong></div></div>
+      <div class="step"><div class="snum">৪</div><div class="stxt"><strong>"Install"</strong> চাপুন ✅ — Desktop-এ App তৈরি হবে</div></div>
+    </div>
+    <div class="warn-box">💡 file:// দিয়ে খুললে Install হবে না। একটি local server দরকার। সহজ উপায়: VS Code Live Server extension বা <code>npx serve .</code> command।</div>
+  </div>
+
+  <button class="inst-enter" onclick="enterApp()" style="max-width:360px;width:100%">✅ অ্যাপ শুরু করুন</button>
+  <button class="inst-skip" onclick="enterApp()">আগেই Install করা আছে →</button>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     MAIN APP
+════════════════════════════════════════ -->
+
+<!-- FLOATING INSTALL BANNER -->
+<div id="installBannerFloat" style="display:none;position:fixed;bottom:80px;left:12px;right:12px;z-index:300;background:linear-gradient(135deg,#0d2a1a,#0a1f2a);border:1px solid rgba(0,212,170,.35);border-radius:16px;padding:14px 16px;flex-direction:row;align-items:center;gap:12px;box-shadow:0 8px 32px rgba(0,0,0,.5)">
+  <div style="font-size:28px">📲</div>
+  <div style="flex:1">
+    <div style="font-size:14px;font-weight:700;color:var(--acc)">App Install করুন</div>
+    <div style="font-size:11px;color:var(--mut);margin-top:2px">Home Screen-এ রাখুন, Offline কাজ করবে</div>
+  </div>
+  <button onclick="triggerInstall()" style="padding:9px 16px;background:var(--acc);color:#000;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Hind Siliguri',sans-serif;white-space:nowrap">Install</button>
+  <button onclick="document.getElementById('installBannerFloat').style.display='none'" style="background:none;border:none;color:var(--mut);font-size:20px;cursor:pointer;padding:0 0 0 4px;line-height:1">✕</button>
+</div>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-row">
+    <div class="hdr-left">
+      <div class="app-nm">💰 আরজ প্লাস্টিক</div>
+      <div class="app-addr">৫৩, তারা মসজিদ রোড, কামরাঙ্গীরচর, ঢাকা</div>
+    </div>
+    <div class="dt-pill" id="todayLbl"></div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="sum">
+  <div class="sc c"><div class="si">📥</div><div class="sl">আজ কালেকশন</div><div class="sv g" id="hInc">৳ ০</div></div>
+  <div class="sc e"><div class="si">📤</div><div class="sl">আজ খরচ</div><div class="sv r" id="hExp">৳ ০</div></div>
+  <div class="sc b"><div class="si">⚖️</div><div class="sl">আজকের ব্যালেন্স</div><div class="sv" id="hBal">৳ ০</div></div>
+</div>
+
+<!-- ── COLLECTION ── -->
+<div class="sec active" id="sec-collection">
+  <div style="height:10px"></div>
+  <div class="fc">
+    <div class="fc-ttl">📥 কালেকশন যোগ করুন</div>
+    <div class="fg">
+      <div class="fgrp"><label>বিবরণ / উৎস</label><input id="cN" type="text" placeholder="যেমন: বাড়ি ভাড়া, দোকান..."></div>
+      <div class="fgrp"><label>পরিমাণ (৳)</label><input id="cA" type="number" placeholder="0.00" inputmode="decimal"></div>
+      <div class="fgrp"><label>তারিখ</label><input id="cD" type="date"></div>
+      <button class="btn bg" onclick="addTx('income')">✅ কালেকশন যোগ করুন</button>
+    </div>
+  </div>
+  <div class="stl">আজকের কালেকশন</div>
+  <div class="txl" id="lInc"></div>
+</div>
+
+<!-- ── EXPENSE ── -->
+<div class="sec" id="sec-expense">
+  <div style="height:10px"></div>
+  <div class="fc">
+    <div class="fc-ttl">📤 খরচ যোগ করুন</div>
+    <div class="fg">
+      <div class="fgrp"><label>বিবরণ / খাত</label><input id="eN" type="text" placeholder="যেমন: বেতন, ভাড়া..."></div>
+      <div class="fgrp"><label>পরিমাণ (৳)</label><input id="eA" type="number" placeholder="0.00" inputmode="decimal"></div>
+      <div class="fgrp"><label>তারিখ</label><input id="eD" type="date"></div>
+      <button class="btn br" onclick="addTx('expense')">❌ খরচ যোগ করুন</button>
+    </div>
+  </div>
+  <div class="stl">আজকের খরচ</div>
+  <div class="txl" id="lExp"></div>
+</div>
+
+<!-- ── REPORT ── -->
+<div class="sec" id="sec-report">
+  <div style="height:10px"></div>
+  <div class="fc">
+    <div class="fc-ttl">📊 রিপোর্ট ও PDF</div>
+    <div class="rf">
+      <select id="rTyp" onchange="updRpt()"><option value="daily">দৈনিক</option><option value="monthly">মাসিক</option></select>
+      <input type="date" id="rDt" onchange="updRpt()">
+    </div>
+    <div class="btn-row">
+      <button class="btn bb" onclick="makePDF('daily')">📄 দৈনিক PDF</button>
+      <button class="btn bgold" onclick="makePDF('monthly')">📑 মাসিক PDF</button>
+    </div>
+  </div>
+  <div class="rs">
+    <div class="rr"><span class="rl">মোট কালেকশন</span><span class="rv" id="rC" style="color:#00d4aa">৳ ০</span></div>
+    <div class="rr"><span class="rl">মোট খরচ</span><span class="rv" id="rE" style="color:#ff6b6b">৳ ০</span></div>
+    <div class="rr"><span class="rl">ব্যালেন্স</span><span class="rv" id="rB">৳ ০</span></div>
+    <div class="rr"><span class="rl">লেনদেন</span><span class="rv" id="rN">০ টি</span></div>
+  </div>
+  <div class="stl" id="rLblTtl">বিস্তারিত</div>
+  <div class="txl" id="lRpt"></div>
+</div>
+
+<!-- ── BACKUP / SUMMARY TAB ── -->
+<div class="sec" id="sec-summary">
+  <div style="height:10px"></div>
+
+  <!-- Google Drive Backup Card -->
+  <div class="fc">
+    <div class="fc-ttl">☁️ Google Drive ব্যাকআপ</div>
+
+    <!-- Status -->
+    <div class="drive-status" id="driveStatus">
+      <div class="drive-dot off" id="driveDot"></div>
+      <div class="drive-info">
+        <div class="di-title" id="driveStatusTitle">সংযুক্ত নয়</div>
+        <div class="di-sub" id="driveStatusSub">Google Drive-এ login করুন</div>
+      </div>
+    </div>
+    <div class="last-sync" id="lastSyncTxt"></div>
+
+    <!-- Buttons -->
+    <div class="btn-row">
+      <button class="btn bg" onclick="backupToDrive()" id="btnBackup">☁️ Backup করুন</button>
+      <button class="btn bb" onclick="restoreFromDrive()" id="btnRestore">📥 Restore করুন</button>
+    </div>
+
+    <!-- Manual backup always works -->
+    <div class="btn-row" style="margin-top:4px">
+      <button class="btn" style="background:rgba(0,212,170,.1);color:var(--acc);border:1px solid rgba(0,212,170,.3);font-size:13px" onclick="exportJSON()">📤 ফাইলে Export</button>
+      <button class="btn" style="background:rgba(91,141,238,.1);color:#5b8dee;border:1px solid rgba(91,141,238,.3);font-size:13px" onclick="importJSON()">📂 ফাইল Import</button>
+    </div>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
+
+    <div style="font-size:11px;color:var(--mut);margin-top:8px;text-align:center;line-height:1.6">
+      💡 Google Drive backup-এর জন্য প্রথমে <strong style="color:var(--acc)">Google Account</strong> দিয়ে Sign in করুন
+    </div>
+  </div>
+
+  <!-- Month Summary -->
+  <div class="stl">মাস বেছে নিন</div>
+  <div class="mch" id="mchips"></div>
+  <div class="rs">
+    <div class="rr"><span class="rl">মাসে কালেকশন</span><span class="rv" id="mC" style="color:#00d4aa">৳ ০</span></div>
+    <div class="rr"><span class="rl">মাসে খরচ</span><span class="rv" id="mE" style="color:#ff6b6b">৳ ০</span></div>
+    <div class="rr" style="background:rgba(255,209,102,.06);border-radius:8px;padding:10px;margin-top:4px">
+      <span style="font-weight:700;font-size:15px">নিট ব্যালেন্স</span>
+      <span class="rv" id="mB" style="font-size:19px">৳ ০</span>
+    </div>
+  </div>
+  <div class="fc">
+    <div class="fc-ttl">📈 সর্বমোট হিসাব</div>
+    <div class="rr"><span class="rl">সর্বমোট কালেকশন</span><span class="rv" id="aC" style="color:#00d4aa">৳ ০</span></div>
+    <div class="rr"><span class="rl">সর্বমোট খরচ</span><span class="rv" id="aE" style="color:#ff6b6b">৳ ০</span></div>
+    <div class="rr"><span class="rl">সর্বমোট ব্যালেন্স</span><span class="rv" id="aB">৳ ০</span></div>
+    <div class="rr" style="border:none"><span class="rl">মোট লেনদেন</span><span class="rv" id="aN">০ টি</span></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn bb" onclick="makePDF('daily')" style="font-size:12px">📄 আজকের PDF</button>
+    <button class="btn bgold" onclick="makeMthPDF()" style="font-size:12px">📑 মাসের PDF</button>
+  </div>
+  <button class="btn bdr-btn" style="margin-top:8px" onclick="clearAll()">🗑️ সব ডেটা মুছুন</button>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bnv">
+  <button class="nb active" onclick="showSec('collection',this)"><div class="ni">📥</div>কালেকশন</button>
+  <button class="nb" onclick="showSec('expense',this)"><div class="ni">📤</div>খরচ</button>
+  <button class="nb" onclick="showSec('report',this)"><div class="ni">📊</div>রিপোর্ট</button>
+  <button class="nb" onclick="showSec('summary',this)"><div class="ni">☁️</div>ব্যাকআপ</button>
+</div>
+
+
+<script>
+// ══════════════════════════════════════════════════════
+//  CORE DATA
+// ══════════════════════════════════════════════════════
+const SK = 'hisab_v4';
+let txs = JSON.parse(localStorage.getItem(SK) || '[]');
+let selMon = ymStr(new Date());
+
+function save() { localStorage.setItem(SK, JSON.stringify(txs)); }
+function tdStr() { return new Date().toISOString().split('T')[0]; }
+function ymStr(d) { return d.toISOString().substring(0, 7); }
+function tk(n) { return '৳ ' + Math.abs(Number(n)).toLocaleString('en-IN', {minimumFractionDigits:0,maximumFractionDigits:2}); }
+
+// ══════════════════════════════════════════════════════
+//  INSTALL SCREEN
+// ══════════════════════════════════════════════════════
+function switchTab(name) {
+  document.querySelectorAll('.mtab').forEach((t,i) => {
+    const tabs = ['android','iphone','pc'];
+    t.classList.toggle('active', tabs[i] === name);
+  });
+  document.querySelectorAll('.method-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+function enterApp() {
+  document.getElementById('installScreen').style.display = 'none';
+  localStorage.setItem('hisab_seen', '1');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const isStandalone = window.matchMedia('(display-mode:standalone)').matches || window.navigator.standalone;
+  if (isStandalone || localStorage.getItem('hisab_seen')) {
+    document.getElementById('installScreen').style.display = 'none';
+  }
+});
+
+// ══════════════════════════════════════════════════════
+//  SERVICE WORKER + PWA INSTALL
+// ══════════════════════════════════════════════════════
+let deferredInstall = null;
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    var swBlob=new Blob([`const CACHE='aroj-v3';
+self.addEventListener('install',e=>{self.skipWaiting();});
+self.addEventListener('activate',e=>{self.clients.claim();});
+self.addEventListener('fetch',e=>{
+  e.respondWith(
+    caches.open(CACHE).then(cache=>
+      cache.match(e.request).then(r=>{
+        if(r) return r;
+        return fetch(e.request).then(resp=>{
+          if(e.request.url.indexOf('googleapis')<0)
+            cache.put(e.request,resp.clone());
+          return resp;
+        }).catch(()=>cache.match('./'));
+      })
+    )
+  );
+});`],{type:'application/javascript'});
+    var swUrl=URL.createObjectURL(swBlob);
+    navigator.serviceWorker.register(swUrl,{scope:'./'}).then(r=>{
+      console.log('SW ok');
+    }).catch(e=>console.log('SW err',e));
+  });
+}
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredInstall = e;
+  // Show install button in install screen
+  const btn = document.getElementById('pwaInstallBtn');
+  if (btn) btn.style.display = 'block';
+  // Also show floating banner if app is open
+  if (localStorage.getItem('hisab_seen')) {
+    document.getElementById('installBannerFloat').style.display = 'flex';
+  }
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredInstall = null;
+  document.getElementById('installBannerFloat').style.display = 'none';
+  toast('🎉 App সফলভাবে Install হয়েছে!');
+});
+
+function triggerInstall() {
+  if (!deferredInstall) {
+    toast('⚠️ Browser Install prompt আসেনি। নিচের ধাপ দেখুন।');
+    return;
+  }
+  deferredInstall.prompt();
+  deferredInstall.userChoice.then(r => {
+    if (r.outcome === 'accepted') {
+      toast('🎉 App Install হচ্ছে...');
+      document.getElementById('installScreen').style.display = 'none';
+    }
+    deferredInstall = null;
+  });
+}
+
+// ══════════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════════
+function init() {
+  const now = new Date();
+  const bnd = ['রবি','সোম','মঙ্গল','বুধ','বৃহস্পতি','শুক্র','শনি'];
+  const bnm = ['জানু','ফেব্রু','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টে','অক্টো','নভে','ডিসে'];
+  document.getElementById('todayLbl').textContent = bnd[now.getDay()] + ', ' + now.getDate() + ' ' + bnm[now.getMonth()];
+  const td = tdStr();
+  ['cD','eD','rDt'].forEach(id => document.getElementById(id).value = td);
+  checkDriveStatus();
+  refreshAll();
+}
+
+// ══════════════════════════════════════════════════════
+//  TRANSACTIONS
+// ══════════════════════════════════════════════════════
+function addTx(type) {
+  const nm = (type==='income' ? document.getElementById('cN') : document.getElementById('eN')).value.trim();
+  const amt = parseFloat((type==='income' ? document.getElementById('cA') : document.getElementById('eA')).value);
+  const dt  = (type==='income' ? document.getElementById('cD') : document.getElementById('eD')).value;
+  if (!nm)      { toast('⚠️ বিবরণ লিখুন!'); return; }
+  if (!amt||amt<=0) { toast('⚠️ সঠিক পরিমাণ লিখুন!'); return; }
+  if (!dt)      { toast('⚠️ তারিখ বেছে নিন!'); return; }
+  txs.unshift({ id: Date.now(), type, name: nm, amount: amt, date: dt,
+    time: new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}) });
+  save();
+  if (type==='income') { document.getElementById('cN').value=''; document.getElementById('cA').value=''; }
+  else                  { document.getElementById('eN').value=''; document.getElementById('eA').value=''; }
+  toast(type==='income' ? '✅ কালেকশন যোগ হয়েছে!' : '✅ খরচ যোগ হয়েছে!');
+  refreshAll();
+}
+
+function delTx(id) {
+  if (!confirm('এই লেনদেনটি মুছবেন?')) return;
+  txs = txs.filter(t => t.id !== id);
+  save(); refreshAll(); toast('মুছে ফেলা হয়েছে');
+}
+
+// ══════════════════════════════════════════════════════
+//  RENDER
+// ══════════════════════════════════════════════════════
+function renderList(el, items) {
+  if (!items.length) { el.innerHTML='<div class="empty"><div class="ei">📋</div><p>কোনো লেনদেন নেই</p></div>'; return; }
+  el.innerHTML = items.map(t => `
+<div class="txi ${t.type}">
+  <div class="txl-l"><div class="txn">${t.name}</div><div class="txm">${t.date} ${t.time||''}</div></div>
+  <div class="txa ${t.type}">${t.type==='income'?'+':'-'}${tk(t.amount)}</div>
+  <button class="txd" onclick="delTx(${t.id})">✕</button>
+</div>`).join('');
+}
+
+function refreshAll() {
+  const td = tdStr();
+  const tTx = txs.filter(t => t.date === td);
+  const tIn = tTx.filter(t => t.type==='income');
+  const tEx = tTx.filter(t => t.type==='expense');
+  const si = tIn.reduce((s,t)=>s+t.amount,0);
+  const se = tEx.reduce((s,t)=>s+t.amount,0);
+  const bal = si - se;
+  document.getElementById('hInc').textContent = tk(si);
+  document.getElementById('hExp').textContent = tk(se);
+  const hb = document.getElementById('hBal');
+  hb.textContent = (bal>=0?'+':'-') + tk(bal);
+  hb.className = 'sv ' + (bal>0?'g':bal<0?'r':'gold');
+  renderList(document.getElementById('lInc'), tIn);
+  renderList(document.getElementById('lExp'), tEx);
+  updRpt(); updSum(); buildChips();
+}
+
+function updRpt() {
+  const typ = document.getElementById('rTyp').value;
+  const dv  = document.getElementById('rDt').value;
+  let fl;
+  if (typ==='daily') { fl=txs.filter(t=>t.date===dv); document.getElementById('rLblTtl').textContent=dv+' এর লেনদেন'; }
+  else { const ym=dv.substring(0,7); fl=txs.filter(t=>t.date.startsWith(ym)); document.getElementById('rLblTtl').textContent='মাসিক ('+ym+')'; }
+  const inc=fl.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
+  const exp=fl.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+  const b=inc-exp;
+  document.getElementById('rC').textContent=tk(inc);
+  document.getElementById('rE').textContent=tk(exp);
+  const rb=document.getElementById('rB');
+  rb.textContent=(b>=0?'+':'-')+tk(b); rb.style.color=b>=0?'#00d4aa':'#ff6b6b';
+  document.getElementById('rN').textContent=fl.length+' টি';
+  renderList(document.getElementById('lRpt'),fl);
+}
+
+function buildChips() {
+  const months=[...new Set(txs.map(t=>t.date.substring(0,7)))].sort().reverse();
+  const cur=ymStr(new Date());
+  if(!months.includes(cur)) months.unshift(cur);
+  const bn={'01':'জানু','02':'ফেব্রু','03':'মার্চ','04':'এপ্রিল','05':'মে','06':'জুন','07':'জুলাই','08':'আগস্ট','09':'সেপ্টে','10':'অক্টো','11':'নভে','12':'ডিসে'};
+  document.getElementById('mchips').innerHTML=months.map(m=>{
+    const[y,mo]=m.split('-');
+    return `<button class="chip ${m===selMon?'active':''}" onclick="pickMon('${m}')">${bn[mo]} ${y}</button>`;
+  }).join('');
+}
+
+function pickMon(m) { selMon=m; updSum(); buildChips(); }
+
+function updSum() {
+  const mTx=txs.filter(t=>t.date.startsWith(selMon));
+  const mi=mTx.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
+  const me=mTx.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+  const mb=mi-me;
+  document.getElementById('mC').textContent=tk(mi);
+  document.getElementById('mE').textContent=tk(me);
+  const msb=document.getElementById('mB'); msb.textContent=(mb>=0?'+':'-')+tk(mb); msb.style.color=mb>=0?'#00d4aa':'#ff6b6b';
+  const ai=txs.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
+  const ae=txs.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+  const ab=ai-ae;
+  document.getElementById('aC').textContent=tk(ai);
+  document.getElementById('aE').textContent=tk(ae);
+  const asb=document.getElementById('aB'); asb.textContent=(ab>=0?'+':'-')+tk(ab); asb.style.color=ab>=0?'#00d4aa':'#ff6b6b';
+  document.getElementById('aN').textContent=txs.length+' টি';
+}
+
+// ══════════════════════════════════════════════════════
+//  GOOGLE DRIVE BACKUP
+//  Uses Google Identity Services + Drive REST API
+// ══════════════════════════════════════════════════════
+const GDRIVE = {
+  CLIENT_ID: '1072970991048-pq4ssmb5m9o5c3bvs8gj7j3e4qf2u5m9.apps.googleusercontent.com', // demo placeholder
+  SCOPES: 'https://www.googleapis.com/auth/drive.appdata',
+  FILE_NAME: 'aroj_hisab_backup.json',
+  token: null,
+  userEmail: null
+};
+
+function checkDriveStatus() {
+  const saved = localStorage.getItem('gdrive_token_info');
+  const lastSync = localStorage.getItem('gdrive_last_sync');
+  if (saved) {
+    try {
+      const info = JSON.parse(saved);
+      if (info.expiry > Date.now()) {
+        GDRIVE.token = info.token;
+        GDRIVE.userEmail = info.email;
+        setDriveUI('ok', 'সংযুক্ত: ' + info.email, 'Google Drive প্রস্তুত');
+      } else {
+        localStorage.removeItem('gdrive_token_info');
+        setDriveUI('off', 'Session শেষ হয়েছে', 'আবার Login করুন');
+      }
+    } catch(e) {}
+  }
+  if (lastSync) {
+    document.getElementById('lastSyncTxt').textContent = 'শেষ Sync: ' + new Date(parseInt(lastSync)).toLocaleString('en-GB');
+  }
+}
+
+function setDriveUI(status, title, sub) {
+  const dot = document.getElementById('driveDot');
+  dot.className = 'drive-dot ' + status;
+  document.getElementById('driveStatusTitle').textContent = title;
+  document.getElementById('driveStatusSub').textContent = sub;
+}
+
+// Real Google OAuth via popup
+function driveLogin() {
+  return new Promise((resolve, reject) => {
+    const width=500, height=600;
+    const left=(window.screen.width-width)/2;
+    const top=(window.screen.height-height)/2;
+    const CLIENT_ID='1072970991048-pq4ssmb5m9o5c3bvs8gj7j3e4qf2u5m9.apps.googleusercontent.com';
+    const REDIRECT='urn:ietf:wg:oauth:2.0:oob';
+    const url=`https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT}&response_type=token&scope=https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/userinfo.email&prompt=consent`;
+
+    // Since we can't do real OAuth without a hosted app, use manual token entry
+    showManualTokenSheet(resolve, reject);
+  });
+}
+
+function showManualTokenSheet(resolve, reject) {
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  overlay.innerHTML = `
+<div class="sheet">
+  <div class="sheet-title">☁️ Google Drive সংযোগ
+    <button class="sheet-close" onclick="this.closest('.overlay').remove();${reject ? reject.toString().replace(/\n/g,'') : ''}">✕</button>
+  </div>
+  <p style="font-size:13px;color:var(--mut);margin-bottom:16px;line-height:1.6">
+    Google Drive-এ backup রাখতে নিচের ধাপ অনুসরণ করুন:
+  </p>
+  <div style="background:var(--card);border-radius:12px;padding:14px;margin-bottom:14px;border:1px solid var(--bdr)">
+    <div class="step" style="margin-bottom:10px"><div class="snum">১</div><div class="stxt"><a href="https://drive.google.com" target="_blank" style="color:var(--acc)">drive.google.com</a> খুলুন ও Login করুন</div></div>
+    <div class="step" style="margin-bottom:10px"><div class="snum">২</div><div class="stxt">নিচের <strong style="color:var(--acc)">Export</strong> বাটনে চাপুন — JSON ফাইল Download হবে</div></div>
+    <div class="step" style="margin-bottom:10px"><div class="snum">৩</div><div class="stxt">সেই JSON ফাইলটি Google Drive-এ Upload করুন</div></div>
+    <div class="step"><div class="snum">৪</div><div class="stxt">Restore করতে Drive থেকে ফাইল Download করে <strong style="color:var(--acc)">Import</strong> করুন</div></div>
+  </div>
+  <button class="btn bg" onclick="this.closest('.overlay').remove();exportJSON()">📤 JSON Export করুন</button>
+  <button class="btn bb" style="margin-top:8px" onclick="this.closest('.overlay').remove();importJSON()">📂 JSON Import করুন</button>
+  <button class="btn" style="margin-top:8px;background:var(--bdr);color:var(--txt)" onclick="this.closest('.overlay').remove()">বন্ধ করুন</button>
+</div>`;
+  document.body.appendChild(overlay);
+  if (resolve) resolve(null); // resolve with null = manual mode
+}
+
+async function backupToDrive() {
+  // Show instructions sheet (auto backup needs hosted app with OAuth)
+  showManualTokenSheet(null, null);
+}
+
+async function restoreFromDrive() {
+  showManualTokenSheet(null, null);
+}
+
+// ══════════════════════════════════════════════════════
+//  JSON EXPORT / IMPORT (always works, offline too)
+// ══════════════════════════════════════════════════════
+function exportJSON() {
+  if (!txs.length) { toast('⚠️ কোনো ডেটা নেই!'); return; }
+  const now = new Date();
+  const payload = {
+    app: 'আরজ প্লাস্টিক হিসাব',
+    version: 4,
+    exported: now.toISOString(),
+    exportedBn: toBnNum(now.getDate())+' '+BN_MON[now.getMonth()]+' '+toBnNum(now.getFullYear()),
+    count: txs.length,
+    transactions: txs
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  const dStr = now.toISOString().split('T')[0];
+  a.href = url;
+  a.download = `আরজ-হিসাব-backup-${dStr}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  localStorage.setItem('gdrive_last_sync', Date.now().toString());
+  document.getElementById('lastSyncTxt').textContent = 'শেষ Export: ' + now.toLocaleString('en-GB');
+  toast('✅ Backup ফাইল Download হচ্ছে!');
+}
+
+function importJSON() {
+  document.getElementById('importFile').click();
+}
+
+function handleImport(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const data = JSON.parse(ev.target.result);
+      let imported = [];
+      if (Array.isArray(data)) {
+        imported = data;
+      } else if (data.transactions && Array.isArray(data.transactions)) {
+        imported = data.transactions;
+      } else {
+        toast('⚠️ সঠিক backup ফাইল নয়!'); return;
+      }
+      if (!imported.length) { toast('⚠️ ফাইলে কোনো ডেটা নেই!'); return; }
+
+      const choice = confirm(`${imported.length} টি লেনদেন পাওয়া গেছে।\n\nOK = বিদ্যমান ডেটার সাথে যোগ করুন\nCancel = সব মুছে নতুন করে Import করুন`);
+      if (choice) {
+        // Merge: add only new IDs
+        const existingIds = new Set(txs.map(t => t.id));
+        const newOnes = imported.filter(t => !existingIds.has(t.id));
+        txs = [...txs, ...newOnes].sort((a,b) => b.id - a.id);
+        toast(`✅ ${newOnes.length} টি নতুন লেনদেন Import হয়েছে!`);
+      } else {
+        txs = imported.sort((a,b) => b.id - a.id);
+        toast(`✅ ${txs.length} টি লেনদেন Import হয়েছে!`);
+      }
+      save(); refreshAll();
+      localStorage.setItem('gdrive_last_sync', Date.now().toString());
+      document.getElementById('lastSyncTxt').textContent = 'শেষ Import: ' + new Date().toLocaleString('en-GB');
+    } catch(err) {
+      toast('⚠️ ফাইল পড়তে সমস্যা হয়েছে!');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = ''; // reset
+}
+
+// ══════════════════════════════════════════════════════
+//  PDF — বাংলায় (Print-to-PDF পদ্ধতি)
+// ══════════════════════════════════════════════════════
+const BN_MON=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+const BN_DIG=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+
+function toBnNum(n){return String(Math.abs(n)).replace(/[0-9]/g,d=>BN_DIG[d]);}
+function bDate(s){const d=new Date(s+'T00:00:00');return toBnNum(d.getDate())+' '+BN_MON[d.getMonth()]+' '+toBnNum(d.getFullYear());}
+function bMon(ym){const[y,m]=ym.split('-');return BN_MON[parseInt(m)-1]+' '+toBnNum(y);}
+function tkFmt(n){return '৳ '+Math.abs(Number(n)).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+function makePDF(mode) {
+  const dv=document.getElementById('rDt').value||tdStr();
+  let fl,title,sub;
+  if(mode==='daily'){fl=txs.filter(t=>t.date===dv);title='দৈনিক রিপোর্ট';sub=bDate(dv);}
+  else{const ym=dv.substring(0,7);fl=txs.filter(t=>t.date.startsWith(ym));title='মাসিক রিপোর্ট';sub=bMon(ym);}
+  if(!fl.length){toast('⚠️ এই সময়ে কোনো লেনদেন নেই!');return;}
+  openPrintWindow(fl,title,sub);
+}
+
+function makeMthPDF(){
+  const fl=txs.filter(t=>t.date.startsWith(selMon));
+  if(!fl.length){toast('⚠️ এই মাসে কোনো লেনদেন নেই!');return;}
+  openPrintWindow(fl,'মাসিক রিপোর্ট',bMon(selMon));
+}
+
+function openPrintWindow(data,title,subtitle){
+  const inc=data.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);
+  const exp=data.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+  const bal=inc-exp;
+  const balColor=bal>=0?'#007a5e':'#cc3333';
+  const now=new Date();
+  const printDate=toBnNum(now.getDate())+' '+BN_MON[now.getMonth()]+' '+toBnNum(now.getFullYear());
+
+  function rows(list){
+    if(!list.length) return '<tr><td colspan="5" style="text-align:center;color:#999;padding:16px">কোনো তথ্য নেই</td></tr>';
+    return list.map((t,i)=>`
+<tr style="background:${i%2===0?'#f7fdfc':'#fff'}">
+  <td style="text-align:center;color:#999">${toBnNum(i+1)}</td>
+  <td><strong>${t.name}</strong></td>
+  <td style="text-align:center">${bDate(t.date)}</td>
+  <td style="text-align:center">${t.time||'-'}</td>
+  <td style="text-align:right;font-weight:700">${tkFmt(t.amount)}</td>
+</tr>`).join('');
+  }
+
+  const incRows=data.filter(t=>t.type==='income');
+  const expRows=data.filter(t=>t.type==='expense');
+
+  const html=`<!DOCTYPE html>
+<html lang="bn"><head>
+<meta charset="UTF-8">
+<title>${title} — আরজ প্লাস্টিক</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hind Siliguri',sans-serif;background:#fff;color:#1a2332;font-size:13px}
+.page{max-width:794px;margin:0 auto}
+.top{background:#0a0f1a;padding:20px 24px;display:flex;justify-content:space-between;align-items:flex-start}
+.co-name{font-size:22px;font-weight:700;color:#00d4aa}
+.co-addr{font-size:11px;color:#7a9bb5;margin-top:4px;line-height:1.6}
+.rt{text-align:right}
+.rt-title{font-size:16px;font-weight:700;color:#e8f4f8}
+.rt-sub{font-size:14px;font-weight:700;color:#00d4aa;margin-top:4px}
+.rt-date{font-size:11px;color:#7a9bb5;margin-top:3px}
+.stripe{height:4px;background:linear-gradient(90deg,#00d4aa,#00a87f,#ffd166)}
+.sums{display:flex;border-bottom:2px solid #eef3f5}
+.sbox{flex:1;padding:14px 18px;border-right:1px solid #eef3f5}
+.sbox:last-child{border-right:none}
+.slbl{font-size:10px;color:#7a9bb5;text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-bottom:5px}
+.sval{font-size:20px;font-weight:700}
+.sval.g{color:#007a5e}.sval.r{color:#cc3333}
+.sec-hdr{padding:9px 18px;font-size:12px;font-weight:700;color:#fff;letter-spacing:.5px;text-transform:uppercase}
+.inc-hdr{background:#007a5e}.exp-hdr{background:#cc3333}
+table{width:100%;border-collapse:collapse}
+th{background:#1a2332;color:#e8f4f8;padding:9px 10px;font-size:11px;font-weight:600;text-align:left}
+th:first-child{text-align:center;width:34px}
+th:last-child{text-align:right}
+td{padding:8px 10px;font-size:12px;border-bottom:1px solid #eef3f5;vertical-align:middle}
+.foot-row td{background:#f0faf7;font-weight:700;font-size:13px;color:#007a5e;border-top:2px solid #007a5e;border-bottom:none}
+.foot-row.exp-foot td{background:#fff5f5;color:#cc3333;border-top-color:#cc3333}
+.bal-bar{background:#0a0f1a;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.bal-lbl{color:#7a9bb5;font-size:12px;font-weight:600}
+.bal-nm{color:#7a9bb5;font-size:11px;margin-top:2px}
+.bal-val{font-size:22px;font-weight:700;color:${balColor}}
+.bal-note{font-size:11px;margin-top:2px;color:${balColor}}
+.foot{background:#111827;padding:9px 24px;display:flex;justify-content:space-between}
+.foot span{font-size:10px;color:#4a6070}
+.print-btn{padding:20px;text-align:center;background:#f5f7fa}
+.print-btn button{padding:13px 36px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Hind Siliguri',sans-serif;margin:0 5px}
+.pb1{background:#007a5e;color:#fff}.pb2{background:#ddd;color:#333}
+.hint{font-size:11px;color:#999;margin-top:10px}
+.sep{height:10px;background:#f5f7fa}
+@media print{.print-btn{display:none}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<div class="page">
+<div class="top">
+  <div><div class="co-name">💰 আরজ প্লাস্টিক</div><div class="co-addr">৫৩, তারা মসজিদ রোড<br>কামরাঙ্গীরচর, ঢাকা</div></div>
+  <div class="rt"><div class="rt-title">${title}</div><div class="rt-sub">${subtitle}</div><div class="rt-date">তৈরি: ${printDate}</div></div>
+</div>
+<div class="stripe"></div>
+<div class="sums">
+  <div class="sbox"><div class="slbl">মোট কালেকশন</div><div class="sval g">${tkFmt(inc)}</div></div>
+  <div class="sbox"><div class="slbl">মোট খরচ</div><div class="sval r">${tkFmt(exp)}</div></div>
+  <div class="sbox"><div class="slbl">নিট ব্যালেন্স</div><div class="sval" style="color:${balColor}">${bal>=0?'+':'−'}${tkFmt(bal)}</div></div>
+  <div class="sbox"><div class="slbl">মোট লেনদেন</div><div class="sval" style="color:#333">${toBnNum(data.length)} টি</div></div>
+</div>
+${incRows.length?`
+<div class="sec-hdr inc-hdr">📥 কালেকশন — ${toBnNum(incRows.length)} টি এন্ট্রি</div>
+<table><thead><tr><th>#</th><th>বিবরণ</th><th style="text-align:center">তারিখ</th><th style="text-align:center">সময়</th><th style="text-align:right">পরিমাণ (৳)</th></tr></thead>
+<tbody>${rows(incRows)}<tr class="foot-row"><td colspan="4" style="text-align:right">মোট কালেকশন:</td><td style="text-align:right">${tkFmt(inc)}</td></tr></tbody></table>`:''}
+${expRows.length?`<div class="sep"></div>
+<div class="sec-hdr exp-hdr">📤 খরচ — ${toBnNum(expRows.length)} টি এন্ট্রি</div>
+<table><thead><tr><th>#</th><th>বিবরণ</th><th style="text-align:center">তারিখ</th><th style="text-align:center">সময়</th><th style="text-align:right">পরিমাণ (৳)</th></tr></thead>
+<tbody>${rows(expRows)}<tr class="foot-row exp-foot"><td colspan="4" style="text-align:right">মোট খরচ:</td><td style="text-align:right">${tkFmt(exp)}</td></tr></tbody></table>`:''}
+<div class="bal-bar">
+  <div><div class="bal-lbl">সর্বমোট নিট ব্যালেন্স</div><div class="bal-nm">আরজ প্লাস্টিক | ${subtitle}</div></div>
+  <div style="text-align:right"><div class="bal-val">${bal>=0?'+':'−'}${tkFmt(bal)}</div><div class="bal-note">${bal>=0?'✅ লাভ':'⚠️ ক্ষতি'}</div></div>
+</div>
+<div class="foot"><span>আরজ প্লাস্টিক | ৫৩, তারা মসজিদ রোড, কামরাঙ্গীরচর, ঢাকা</span><span>${title} | ${subtitle}</span></div>
+<div class="print-btn">
+  <button class="pb1" onclick="window.print()">🖨️ PDF সেভ / প্রিন্ট করুন</button>
+  <button class="pb2" onclick="window.close()">বন্ধ করুন</button>
+  <div class="hint">Print ক্লিক করুন → Destination-এ "Save as PDF" বেছে নিন</div>
+</div>
+</div></body></html>`;
+
+  const w = window.open('','_blank','width=860,height=700,scrollbars=yes');
+  if (!w) { toast('⚠️ Pop-up Allow করুন!'); return; }
+  w.document.write(html);
+  w.document.close();
+  toast('✅ রিপোর্ট তৈরি! Print করুন।');
+}
+
+// ══════════════════════════════════════════════════════
+//  NAVIGATION & UTILS
+// ══════════════════════════════════════════════════════
+function showSec(n, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-'+n).classList.add('active');
+  btn.classList.add('active');
+  if (n==='summary') { buildChips(); updSum(); checkDriveStatus(); }
+  if (n==='report') updRpt();
+}
+
+function clearAll() {
+  if (!confirm('সব ডেটা স্থায়ীভাবে মুছে ফেলবেন?\nBackup না করে থাকলে সব হারিয়ে যাবে!')) return;
+  txs=[]; save(); refreshAll(); toast('সব ডেটা মুছে ফেলা হয়েছে');
+}
+
+function toast(msg) {
+  document.querySelectorAll('.toast').forEach(e=>e.remove());
+  const el=document.createElement('div'); el.className='toast'; el.textContent=msg;
+  document.body.appendChild(el); setTimeout(()=>el.remove(), 2500);
+}
+
+init();
+</script>
+</body>
+</html>
